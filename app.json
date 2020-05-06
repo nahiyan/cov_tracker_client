@@ -22,7 +22,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "io.github.nahiyan"
+    },
+    "android": {
+      "package": "io.github.nahiyan"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
