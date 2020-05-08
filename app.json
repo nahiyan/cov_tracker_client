@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "name": "cov_tracker_client",
+    "slug": "cov_tracker_client",
     "platforms": [
       "ios",
       "android",
