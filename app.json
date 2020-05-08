@@ -29,5 +29,6 @@
       "package": "io.github.nahiyan"
     },
     "entryPoint": "node_modules/expo/AppEntry.js"
-  }
+  },
+  "displayName": "CoVTracker"
 }
