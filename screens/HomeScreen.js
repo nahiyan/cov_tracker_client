@@ -44,7 +44,7 @@ const normal = (
 // conenction failed
 const failedConnection = (
   <View style={styles.home}>
-    <Text style={styles.largeText}>Failed to connect to server!</Text>
+    <Text style={[styles.largeText, { marginBottom: 10 }]}>Failed to connect to server!</Text>
     <Button
       style={styles.button}
       title='Reconnect'
