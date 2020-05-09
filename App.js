@@ -5,25 +5,16 @@ import LoginScreen from './screens/LoginScreen.js'
 import RegisterScreen from './screens/RegisterScreen.js'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { logout } from './lib/authentication'
 
 const Stack = createStackNavigator()
-global.serverAddress = 'http://192.168.0.103:4000'
+global.serverAddress = '192.168.0.103:4000'
+// global.lastLocationUpdateTimestamp = null
 
 export default function App () {
-  // Initialize websocket connection
-  // console.log('Starting location updates')
-  // startLocationUpdates()
-  // window.setTimeout(() => {
-  //   stopLocationUpdates()
-  // }, 20000)
-
-  // Test async storage
-  // (async () => {
-  //   // if (await setToken('Fuck my ass') != null) {
-  //   //   console.log(await getToken())
-  //   // }
-  //   console.log(await getToken())
-  // })()
+  (async () => {
+    await logout()
+  })()
 
   return (
     <NavigationContainer>

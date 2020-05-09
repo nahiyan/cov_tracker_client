@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextInput, Button, View } from 'react-native'
+import { Text, TextInput, Button, View } from 'react-native'
 import styles from '../styles/global.js'
 
 export default function RegisterScreen ({ navigation }) {
@@ -9,28 +9,32 @@ export default function RegisterScreen ({ navigation }) {
   const [passwordAgain, setPasswordAgain] = useState('')
   return (
     <View style={styles.login}>
+      <Text style={styles.label}>NID Number:</Text>
       <TextInput
-        style={{ height: 40 }}
+        style={styles.textInput}
         placeholder='Type your NID number here:'
         onChangeText={username => setUsername(username)}
         defaultValue={username}
       />
+      <Text style={styles.label}>Phone Number:</Text>
       <TextInput
-        style={{ height: 40 }}
+        style={styles.textInput}
         placeholder='Type your phone number here:'
         onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
         defaultValue={phoneNumber}
       />
+      <Text style={styles.label}>Password:</Text>
       <TextInput
-        style={{ height: 40 }}
+        style={styles.textInput}
         placeholder='Type your password:'
         onChangeText={password => setPassword(password)}
         defaultValue={password}
         secureTextEntry
         password
       />
+      <Text style={styles.label}>Password Again:</Text>
       <TextInput
-        style={{ height: 40 }}
+        style={styles.textInput}
         placeholder='Type your password again:'
         onChangeText={passwordAgain => setPasswordAgain(passwordAgain)}
         defaultValue={passwordAgain}
@@ -38,6 +42,7 @@ export default function RegisterScreen ({ navigation }) {
         password
       />
       <Button
+        style={styles.button}
         title='Register'
         onPress={() =>
           console.log('Register')}
