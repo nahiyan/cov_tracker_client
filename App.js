@@ -1,6 +1,6 @@
 import React from 'react'
 import 'react-native-gesture-handler'
-import HomeScreen from './screens/HomeScreen.js'
+import { HomeScreen } from './screens/HomeScreen.js'
 import LoginScreen from './screens/LoginScreen.js'
 import RegisterScreen from './screens/RegisterScreen.js'
 import { NavigationContainer } from '@react-navigation/native'
@@ -9,7 +9,6 @@ import { logout } from './lib/authentication'
 
 const Stack = createStackNavigator()
 global.serverAddress = '192.168.0.103:4000'
-// global.lastLocationUpdateTimestamp = null
 
 export default function App () {
   (async () => {

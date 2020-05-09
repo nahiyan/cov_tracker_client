@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text, TextInput, Button, View, ActivityIndicator } from 'react-native'
 import styles from '../styles/global.js'
 import { login } from '../lib/authentication'
-import { setToken } from '../lib/token'
+import { connect } from '../screens/HomeScreen'
 
 export default function LoginScreen ({ navigation }) {
   const [username, setUsername] = useState('')
@@ -12,15 +12,8 @@ export default function LoginScreen ({ navigation }) {
   const loginResponse = async (response) => {
     switch (response.status) {
       case 'ok':
-        if (await setToken(response.token) != null) {
-          navigation.navigate('Home')
-        } else {
-          setMessage(
-            <View style={styles.message}>
-              <Text style={styles.errorText}>Failed to set token.</Text>
-            </View>
-          )
-        }
+        connect()
+        navigation.navigate('Home')
         break
       case 'error':
         setMessage(

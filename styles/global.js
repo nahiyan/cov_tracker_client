@@ -20,8 +20,6 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   mediumText: {
-    marginTop: 10,
-    marginBottom: 10,
     fontSize: 15
   },
   label: {

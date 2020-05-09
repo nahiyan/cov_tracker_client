@@ -1,14 +1,46 @@
 import React, { useState } from 'react'
-import { Text, TextInput, Button, View } from 'react-native'
+import { FlatList, Text, TextInput, Button, View, ActivityIndicator } from 'react-native'
 import styles from '../styles/global.js'
+import { register } from '../lib/authentication'
+import { connect } from '../screens/HomeScreen'
 
 export default function RegisterScreen ({ navigation }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [passwordAgain, setPasswordAgain] = useState('')
+  const [message, setMessage] = useState()
+
+  const registerResponse = async (response) => {
+    switch (response.status) {
+      case 'ok':
+        connect()
+        navigation.navigate('Home')
+        break
+      case 'error':
+        if (response.reason !== undefined) {
+          setMessage(
+            <View style={styles.message}>
+              <Text style={styles.errorText}>{response.reason}</Text>
+            </View>
+          )
+        } else {
+          setMessage(
+            <View style={styles.message}>
+              <FlatList
+                data={response.reasons} renderItem={({ item }) =>
+                  <Text style={styles.errorText}>{item.key}</Text>}
+              />
+            </View>
+          )
+        }
+        break
+    }
+  }
+
   return (
     <View style={styles.login}>
+      {message}
       <Text style={styles.label}>NID Number:</Text>
       <TextInput
         style={styles.textInput}
@@ -44,8 +76,14 @@ export default function RegisterScreen ({ navigation }) {
       <Button
         style={styles.button}
         title='Register'
-        onPress={() =>
-          console.log('Register')}
+        onPress={() => {
+          setMessage(
+            <View style={styles.message}>
+              <ActivityIndicator style={styles.activityIndicator} />
+            </View>
+          )
+          register(registerResponse, username, phoneNumber, password, passwordAgain)
+        }}
       />
     </View>
   )
