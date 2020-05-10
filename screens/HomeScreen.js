@@ -70,6 +70,13 @@ const noLocationProvider = (
   </View>
 )
 
+// other error
+const otherError = (
+  <View style={styles.home}>
+    <Text style={styles.largeText}>There was an error associated with location update entry.</Text>
+  </View>
+)
+
 const connect = () => {
   setContent(loading)
 
@@ -87,8 +94,12 @@ const connect = () => {
           stopLocationUpdates()
           break
 
-        default:
+        case 'No location provider':
           setContent(noLocationProvider)
+          break
+
+        default:
+          setContent(otherError)
           break
       }
     } else if (status === 'ok') {
